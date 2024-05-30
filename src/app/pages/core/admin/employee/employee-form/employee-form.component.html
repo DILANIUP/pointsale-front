@@ -1,1 +1,142 @@
-<p>employee-form works!</p>
+
+  
+    <div class="container">
+        <div class="nav">
+            <app-nav-bar></app-nav-bar>
+        </div>
+        <div class="main">
+    <form [formGroup]="form" style="width: 50%; text-align: center; border: 2px solid #0a0a0a; padding: 20px;">
+        <p class="h1">Registro del empleado</p>
+
+            <div class="flex flex-column gap-2">
+              <label for="names" class="font-bold block mb-2">Nombres: </label>
+              <input 
+                  pInputText 
+                  id="names" 
+                  aria-describedby="username-help" 
+                  formControlName="names" />
+              <small id="username-help">
+                  Ingrese sus dos nombres
+              </small>
+          
+            @if (namesField.errors) {
+                @if (namesField.touched) {
+                  @if (namesField.errors['minlength']) {
+                    <span style="color: red; ">El campo debe contener 5 caracteres o más</span>
+                  }
+                  @else if (namesField.errors['required']) {
+                    <span style="color: red;">El campo es requerido</span>
+                  }
+                }
+              }
+          </div><br>
+        
+
+          <div class="flex flex-column gap-2">
+            <label for="lastnames" class="font-bold block mb-2">Apellidos: </label>
+            <input 
+                pInputText 
+                id="lastnames" 
+                aria-describedby="username-help" 
+                formControlName="lastnames" />
+            <small id="username-help">
+                Ingrese sus dos apellidos
+            </small>
+
+          @if (lastnamesField.errors) {
+              @if (lastnamesField.touched) {
+                @if (lastnamesField.errors['minlength']) {
+                  <span style="color: red; ">El campo debe contener 5 caracteres o más</span>
+                }
+                @else if (lastnamesField.errors['required']) {
+                  <span style="color: red;">El campo es requerido</span>
+                }
+              }
+            }
+      </div><br>
+
+
+          <div class="flex flex-column gap-2">
+            <label for="email" class="font-bold block mb-2">Email: </label>
+            <input 
+                pInputText 
+                id="email" 
+                aria-describedby="username-help" 
+                formControlName="email" />
+            <small id="username-help">
+                Ingrese su correo electronico
+            </small>
+            @if (emailField.errors) {
+                @if (emailField.touched) {
+                  @if (emailField.errors['minlength']) {
+                    <span style="color: red;">El campo debe contener 2 caracteres o más</span>
+                  }
+                  @else if (emailField.errors['required']) {
+                    <span style="color: red;">El campo es requerido</span>
+                  }
+                }
+              }
+        </div><br>
+
+
+      
+            <div class="flex flex-column gap-2">
+              <label for="id" class="font-bold block mb-2">Cédula: </label>
+              <input pInputText id="id" pKeyFilter="int" class="w-full" formControlName="id" /> 
+              <small id="username-help">
+                  Ingrese su número de Cédula
+              </small>
+            @if (idField.errors) {
+              @if (idField.touched) {
+                @if (idField.errors['pattern']) {
+                  <span style="color: red;">El campo no contiene los diez dígitos de su cédula</span>
+                }
+                @else if (idField.errors['required']) {
+                  <span style="color: red;">El campo es requerido</span>
+                }
+              }
+            }
+        </div><br>
+
+
+        
+          <div class="flex flex-column gap-2">
+            <label for="phone" class="font-bold block mb-2">Número de celular: </label>
+            <input pInputText id="phone" pKeyFilter="int" class="w-full" formControlName="phone" /> 
+            <small id="username-help">
+                Ingrese su número de celular
+            </small>
+          @if (phoneField.errors) {
+            @if (phoneField.touched) {
+              @if (phoneField.errors['pattern']) {
+                <span style="color: red;">El campo no contiene los diez dígitos</span>
+              }
+              @else if (phoneField.errors['required']) {
+                <span style="color: red;">El campo es requerido</span>
+              }
+            }
+          }
+      </div><br>
+
+
+        <div>
+            <label for="birthday" class="form-label"><strong>Fecha de nacimiento: </strong></label>
+            <input type="date" class="form-control" id="birthday" formControlName="birthday" style="text-align: center;">
+            @if (birthdayField.errors) {
+              @if (birthdayField.touched) {
+                @if (birthdayField.errors['required']) {
+                  <span style="color: red;">El campo es requerido</span>
+                }
+              }
+            }
+            <div id="">Ingrese su fecha de nacimiento</div>
+        </div><br>
+
+        
+        <div>
+            <p-button label="Submit" icon="pi pi-check" (click)="validateForm()"/>
+        </div>
+    </form>
+    </div>
+</div>
+
