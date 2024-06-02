@@ -19,12 +19,12 @@
                   Ingrese sus dos nombres
               </small>
           
-            @if (namesField.errors) {
-                @if (namesField.touched) {
-                  @if (namesField.errors['minlength']) {
+            @if (nameField.errors) {
+                @if (nameField.touched) {
+                  @if (nameField.errors['minlength']) {
                     <span style="color: red; ">El campo debe contener 5 caracteres o más</span>
                   }
-                  @else if (namesField.errors['required']) {
+                  @else if (nameField.errors['required']) {
                     <span style="color: red;">El campo es requerido</span>
                   }
                 }
@@ -134,7 +134,7 @@
 
         
         <div>
-            <p-button label="Submit" icon="pi pi-check" (click)="validateForm()"/>
+          <p-button label="SUMBIT" icon="pi pi-check" (click)="validateForm()"/>
         </div>
     </form>
     </div>

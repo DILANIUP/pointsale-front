@@ -17,7 +17,7 @@ export class EmployeeFormComponent {
 
   get buildForm(): FormGroup {
     return this.formBuilder.group({
-      names: [null, [Validators.required, Validators.minLength(5)]],
+      name: [null, [Validators.required, Validators.minLength(5)]],
       lastnames: [null, [Validators.required, Validators.minLength(5)]],
       id: [null, [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       birthday: [new Date(), [Validators.required]],
@@ -34,16 +34,9 @@ export class EmployeeFormComponent {
     }
   }
 
-  //Acciones
-  
- /*  create(student: StudentModel): void {
-    this.studentsHttpService.create(student).subscribe(() => {
-      this.form.reset();
-      this.back();
-    });
-  } */
 
-  get namesField():AbstractControl {
+
+  get nameField():AbstractControl {
     return this.form.controls['names']
   }
 
