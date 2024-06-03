@@ -1,28 +1,26 @@
-
-  
-    <div class="container">
+<!--     <div class="container">
         <div class="nav">
             <app-nav-bar></app-nav-bar>
         </div>
         <div class="main">
-    <form [formGroup]="form" style="width: 50%; text-align: center; border: 2px solid #0a0a0a; padding: 20px;">
+    <form [formGroup]="form" style="width: 50%; text-align: center; border: 2px solid #cfbcbc; padding: 20px; border-radius: 20px;">
         <p class="h1">Registro del empleado</p>
 
             <div class="flex flex-column gap-2">
-              <label for="names" class="font-bold block mb-2">Nombres: </label>
+              <label for="names" class="font-bold block mb-2">Nombre del producto: </label>
               <input 
                   pInputText 
-                  id="names" 
+                  id="name" 
                   aria-describedby="username-help" 
-                  formControlName="names" />
+                  formControlName="name" />
               <small id="username-help">
-                  Ingrese sus dos nombres
+                  Ingrese el nombre del producto
               </small>
           
             @if (nameField.errors) {
                 @if (nameField.touched) {
                   @if (nameField.errors['minlength']) {
-                    <span style="color: red; ">El campo debe contener 5 caracteres o más</span>
+                    <span style="color: red; ">El campo debe contener 2 caracteres o más</span>
                   }
                   @else if (nameField.errors['required']) {
                     <span style="color: red;">El campo es requerido</span>
@@ -32,66 +30,15 @@
           </div><br>
         
 
-          <div class="flex flex-column gap-2">
-            <label for="lastnames" class="font-bold block mb-2">Apellidos: </label>
-            <input 
-                pInputText 
-                id="lastnames" 
-                aria-describedby="username-help" 
-                formControlName="lastnames" />
-            <small id="username-help">
-                Ingrese sus dos apellidos
-            </small>
-
-          @if (lastnamesField.errors) {
-              @if (lastnamesField.touched) {
-                @if (lastnamesField.errors['minlength']) {
-                  <span style="color: red; ">El campo debe contener 5 caracteres o más</span>
-                }
-                @else if (lastnamesField.errors['required']) {
-                  <span style="color: red;">El campo es requerido</span>
-                }
-              }
-            }
-      </div><br>
-
-
-          <div class="flex flex-column gap-2">
-            <label for="email" class="font-bold block mb-2">Email: </label>
-            <input 
-                pInputText 
-                id="email" 
-                aria-describedby="username-help" 
-                formControlName="email" />
-            <small id="username-help">
-                Ingrese su correo electronico
-            </small>
-            @if (emailField.errors) {
-                @if (emailField.touched) {
-                  @if (emailField.errors['minlength']) {
-                    <span style="color: red;">El campo debe contener 2 caracteres o más</span>
-                  }
-                  @else if (emailField.errors['required']) {
-                    <span style="color: red;">El campo es requerido</span>
-                  }
-                }
-              }
-        </div><br>
-
-
-      
             <div class="flex flex-column gap-2">
-              <label for="id" class="font-bold block mb-2">Cédula: </label>
-              <input pInputText id="id" pKeyFilter="int" class="w-full" formControlName="id" /> 
+              <label for="price" class="font-bold block mb-2">Precio: </label>
+              <input pInputText id="price" pKeyFilter="int" class="w-full" formControlName="price" /> 
               <small id="username-help">
-                  Ingrese su número de Cédula
+                  Ingrese el precio del producto
               </small>
-            @if (idField.errors) {
-              @if (idField.touched) {
-                @if (idField.errors['pattern']) {
-                  <span style="color: red;">El campo no contiene los diez dígitos de su cédula</span>
-                }
-                @else if (idField.errors['required']) {
+            @if (priceField.errors) {
+              @if (priceField.touched) {
+                @if (priceField.errors['required']) {
                   <span style="color: red;">El campo es requerido</span>
                 }
               }
@@ -101,42 +48,112 @@
 
         
           <div class="flex flex-column gap-2">
-            <label for="phone" class="font-bold block mb-2">Número de celular: </label>
-            <input pInputText id="phone" pKeyFilter="int" class="w-full" formControlName="phone" /> 
+            <label for="unit" class="font-bold block mb-2">Unidades del producto </label>
+            <input pInputText id="unit" pKeyFilter="int" class="w-full" formControlName="unit" /> 
             <small id="username-help">
-                Ingrese su número de celular
+                Ingrese el numero de unidades deseadas
             </small>
-          @if (phoneField.errors) {
-            @if (phoneField.touched) {
-              @if (phoneField.errors['pattern']) {
-                <span style="color: red;">El campo no contiene los diez dígitos</span>
+          @if (unitField.errors) {
+            @if (unitField.touched) {
+              @if (unitField.errors['min']) {
+                <span style="color: red;">El campo debe contener por lo menos una unidad</span>
               }
-              @else if (phoneField.errors['required']) {
+              @else if (unitField.errors['required']) {
                 <span style="color: red;">El campo es requerido</span>
               }
             }
           }
       </div><br>
 
-
         <div>
-            <label for="birthday" class="form-label"><strong>Fecha de nacimiento: </strong></label>
-            <input type="date" class="form-control" id="birthday" formControlName="birthday" style="text-align: center;">
-            @if (birthdayField.errors) {
-              @if (birthdayField.touched) {
-                @if (birthdayField.errors['required']) {
-                  <span style="color: red;">El campo es requerido</span>
-                }
-              }
-            }
-            <div id="">Ingrese su fecha de nacimiento</div>
-        </div><br>
-
-        
-        <div>
-          <p-button label="SUMBIT" icon="pi pi-check" (click)="validateForm()"/>
+          <button 
+              pButton 
+              pRipple 
+              label="Submit" 
+              class="p-button-success">
+          </button>
         </div>
     </form>
     </div>
 </div>
+ -->
+<div class="container">
+  <div class="nav">
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div class="main">
+    <p-card header="Registro del producto"  [style]="{ width: '800px' }">
+      
+      <form [formGroup]="form"
+        style="width: 100%; text-align: center; border: 2px solid #cfbcbc; padding: 20px; border-radius: 20px;">
 
+        <div class="flex flex-column gap-2">
+          <label for="names" class="font-bold block mb-2">Nombre del producto: </label>
+          <input pInputText id="name" aria-describedby="username-help" formControlName="name" />
+          <small id="username-help">
+            Ingrese el nombre del producto
+          </small>
+
+          @if (nameField.errors) {
+          @if (nameField.touched) {
+          @if (nameField.errors['minlength']) {
+          <span style="color: red; ">El campo debe contener 2 caracteres o más</span>
+          }
+          @else if (nameField.errors['required']) {
+          <span style="color: red;">El campo es requerido</span>
+          }
+          }
+          }
+        </div><br>
+
+
+        <div class="flex flex-column gap-2">
+          <label for="price" class="font-bold block mb-2">Precio: </label>
+          <input pInputText id="price" pKeyFilter="int" class="w-full" formControlName="price" (input)="updateCost()"/>
+          <small id="username-help">
+            Ingrese el precio del producto
+          </small>
+          @if (priceField.errors) {
+          @if (priceField.touched) {
+          @if (priceField.errors['required']) {
+          <span style="color: red;">El campo es requerido</span>
+          }
+          }
+          }
+        </div><br>
+
+
+
+        <div class="flex flex-column gap-2">
+          <label for="unit" class="font-bold block mb-2">Unidades del producto </label>
+          <input pInputText id="unit" pKeyFilter="int" class="w-full" formControlName="unit" (input)="updateCost()"/>
+          <small id="username-help">
+            Ingrese el numero de unidades deseadas
+          </small>
+          @if (unitField.errors) {
+          @if (unitField.touched) {
+          @if (unitField.errors['min']) {
+          <span style="color: red;">El campo debe contener por lo menos una unidad</span>
+          }
+          @else if (unitField.errors['required']) {
+          <span style="color: red;">El campo es requerido</span>
+          }
+          }
+          }
+        </div><br>
+
+        <div class="flex flex-column gap-2">
+          <label for="unit" class="font-bold block mb-2">Costo total: </label>
+          <input pInputText id="unit" pKeyFilter="int" placeholder="{{ result }}" class="w-full" formControlName="unit" (input)="updateCost() "/>
+          
+        </div><br>
+        
+      </form>
+      <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+          <p-button label="Save" class="w-full" styleClass="w-full" />
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

@@ -12,6 +12,11 @@ import { ButtonModule } from 'primeng/button';
 import { TreeTableModule } from 'primeng/treetable';
 import { TableModule } from 'primeng/table';
 import { SharedAppModule } from '../../../shared/shared-app.module';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { OrderListModule } from 'primeng/orderlist';
+import { ListboxModule } from 'primeng/listbox';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,12 @@ import { SharedAppModule } from '../../../shared/shared-app.module';
     ButtonModule,
     TreeTableModule,
     TableModule,
-    SharedAppModule
+    SharedAppModule,
+    ConfirmDialogModule,
+    ConfirmPopupModule,
+    OrderListModule,
+    ListboxModule,
+    CardModule
   ]
 })
 export class EmployeeModule { }

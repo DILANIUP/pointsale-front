@@ -7,23 +7,33 @@ import { EmployeeHttpService } from '../../../../../http-services/employee-http.
   styleUrl: './employee-list.component.scss'
 })
 export class EmployeeListComponent {
-  employes: any = [
+
+  products: any = [
     {
-      name: 'Juan',
-      email: 'juan@gmail.com'
-      
-     },
-     {
-      name: 'Maria',
-      email: 'mariajuana@gmail.com'
-     }  
+      name: 'Arroz',
+      price: '0.50',
+      unit: '2'
+
+    },
+    {
+      name: 'Papas',
+      price: '0.25',
+      unit: '3'
+    },
+    {
+      name: 'Cebolla',
+      price: '0.15',
+      unit: '5'
+    }
   ];
-  constructor(private employeeHttpService:EmployeeHttpService){
+  constructor(private employeeHttpService: EmployeeHttpService) {
     this.findAll()
   }
 
-  findAll(){
-    return this.employeeHttpService.findAll().subscribe(response => {this.employes = response})
+  findAll() {
+    return this.employeeHttpService.findAll().subscribe(response => { this.products = response })
   }
+
+
 }
 

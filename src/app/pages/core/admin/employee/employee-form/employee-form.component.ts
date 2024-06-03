@@ -1,62 +1,67 @@
-import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { EmployeeHttpService } from '../../../../../http-services/employee-http.service';
 
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
-  styleUrl: './employee-form.component.scss'
+  styleUrls: ['./employee-form.component.scss']
 })
 export class EmployeeFormComponent {
-  private formBuilder: FormBuilder = inject(FormBuilder);
-  protected form: FormGroup;
-
-  constructor() {
-    this.form = this.buildForm;
-
+  form: FormGroup;
+  employees: any[] = [];
+  result: number = 0;
+  constructor(
+    private formBuilder: FormBuilder,
+    private employeeHttpService: EmployeeHttpService
+  ) {
+    this.form = this.buildForm();
   }
 
-  get buildForm(): FormGroup {
+  buildForm(): FormGroup {
     return this.formBuilder.group({
-      name: [null, [Validators.required, Validators.minLength(5)]],
-      lastnames: [null, [Validators.required, Validators.minLength(5)]],
-      id: [null, [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      birthday: [new Date(), [Validators.required]],
-      email: [null, [Validators.required, Validators.minLength(2)]],
-      phone: [null, [Validators.required, Validators.pattern('^[0-9]{9}$')]]
-    })
+      name: [null, [Validators.required, Validators.minLength(2)]],
+      price: [null, [Validators.required]],
+      unit: [null, [Validators.required, Validators.min(1)]]
+    });
   }
 
-  validateForm() {
+  onSubmit() {
     if (this.form.valid) {
-      alert('El formulario es valido')
+      const formData = this.form.value;
+      this.employeeHttpService.create(formData).subscribe(
+        (response) => {
+          this.employees.push(response); // Agregar el nuevo empleado a la lista local
+          alert('Empleado creado exitosamente');
+          this.form.reset();
+          // Actualizar la lista en EmployeeListComponent
+          this.employees
+        },
+        (error) => {
+          console.error('Error al crear el empleado:', error);
+          alert('Error al crear el empleado');
+        }
+      );
     } else {
-      alert('El formulario no es valido');
+      alert('El formulario no es válido');
     }
   }
 
-
-
-  get nameField():AbstractControl {
-    return this.form.controls['names']
+  updateCost() {
+    const price = this.form.controls['price'].value;
+    const unit = this.form.controls['unit'].value;
+    this.result = price * unit;
   }
 
-  get lastnamesField():AbstractControl {
-    return this.form.controls['lastnames']
+  get nameField(): AbstractControl {
+    return this.form.controls['name'];
   }
 
-  get idField():AbstractControl {
-    return this.form.controls['id']
+  get priceField(): AbstractControl {
+    return this.form.controls['price'];
   }
 
-  get birthdayField():AbstractControl {
-    return this.form.controls['birthday']
-  }
-
-  get emailField():AbstractControl {
-    return this.form.controls['email']
-  }
-
-  get phoneField():AbstractControl {
-    return this.form.controls['phone']
+  get unitField(): AbstractControl {
+    return this.form.controls['unit'];
   }
 }
